@@ -88,6 +88,28 @@ set textwidth=120
 " show column number
 set ruler
 
+" ======================================================== 
+"                   colorscheme
+" ========================================================
+"
+" colorscheme blue.vim
+" colorscheme darkblue.vim
+" colorscheme default.vim
+" colorscheme delek.vim
+" colorscheme desert.vim
+" colorscheme elflord.vim
+" colorscheme evening.vim
+" colorscheme koehler.vim
+" colorscheme morning.vim
+" colorscheme murphy.vim
+" colorscheme pablo.vim
+" colorscheme peachpuff.vim
+" colorscheme ron.vim
+" shine.vim
+" slate.vim
+" torte.vim
+" zellner.vim
+
 " turn syntax highlighting on
 syntax on
 
