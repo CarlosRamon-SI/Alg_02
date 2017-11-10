@@ -96,24 +96,24 @@ set ruler
 "                   colorscheme
 " ========================================================
 "
-" colorscheme blue.vim
-" colorscheme darkblue.vim
-" colorscheme default.vim
-" colorscheme delek.vim
-" colorscheme desert.vim
-" colorscheme elflord.vim
-" colorscheme evening.vim
-" colorscheme koehler.vim
-" colorscheme morning.vim
-" colorscheme murphy.vim
-" colorscheme pablo.vim
-" colorscheme peachpuff.vim
-" colorscheme ron.vim
-" colorscheme shine.vim
-" colorscheme slate.vim
-" colorscheme torte.vim
-" colorscheme zellner.vim
-colorscheme termschool.vim
+" colorscheme blue
+" colorscheme darkblue
+" colorscheme default
+" colorscheme delek
+" colorscheme desert
+" colorscheme elflord
+" colorscheme evening
+" colorscheme koehler
+" colorscheme morning
+" colorscheme murphy
+" colorscheme pablo
+" colorscheme peachpuff
+" colorscheme ron
+" colorscheme shine
+" colorscheme slate
+" colorscheme torte
+" colorscheme zellner
+colorscheme termschool
 
 " turn syntax highlighting on
 syntax on
