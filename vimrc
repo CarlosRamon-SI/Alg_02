@@ -1,3 +1,7 @@
+" ==================================================================================
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" ==================================================================================
+
 " this is to receive CTRL-S and CTRL-Q
 silent !stty -ixon > /dev/null 2>/dev/null
 
@@ -105,10 +109,11 @@ set ruler
 " colorscheme pablo.vim
 " colorscheme peachpuff.vim
 " colorscheme ron.vim
-" shine.vim
-" slate.vim
-" torte.vim
-" zellner.vim
+" colorscheme shine.vim
+" colorscheme slate.vim
+" colorscheme torte.vim
+" colorscheme zellner.vim
+colorscheme termschool.vim
 
 " turn syntax highlighting on
 syntax on
@@ -126,7 +131,7 @@ set wildmode=longest:list,full
 " buffer can be in the background if it’s modified
 set hidden
 
-" Search
+    " Search
 set hlsearch     " highlight matches
 set incsearch    " incremental searching
 set ignorecase   " searches are case insensitive...
@@ -141,8 +146,8 @@ let g:DoxygenToolkit_paramTag_pre="@Param "
 let g:DoxygenToolkit_returnTag="@Returns   "
 let g:DoxygenToolkit_blockHeader="-------------------------------"
 let g:DoxygenToolkit_blockFooter="---------------------------------"
-let g:DoxygenToolkit_authorName="Sergio Prado <sergio.prado@e-labworks.com>"
-let g:DoxygenToolkit_licenseTag="MIT"
+let g:DoxygenToolkit_authorName="Carlos Ramon M. Leite <ramon.ethan@gmail.com>"
+let g:DoxygenToolkit_licenseTag="UFMT"
 
 " MyNext() and MyPrev(): Movement between tabs OR buffers
 function! MyNext()
