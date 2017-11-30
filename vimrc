@@ -116,6 +116,7 @@ set ruler
 " colorscheme torte
 " colorscheme zellner
 colorscheme termschool
+set t_Co=256
 
 " turn syntax highlighting on
 syntax on
