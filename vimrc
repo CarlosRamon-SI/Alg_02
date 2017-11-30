@@ -54,6 +54,8 @@ Plugin 'vim-scripts/Conque-GDB'
 
 Plugin 'vim-airline/vim-airline'
 
+Plugin 'marcopaganini/termschool-vim-theme'
+
 " end of Vundle initialization
 call vundle#end()
 filetype plugin indent on
@@ -131,7 +133,7 @@ set wildmode=longest:list,full
 " buffer can be in the background if it’s modified
 set hidden
 
-    " Search
+" Search
 set hlsearch     " highlight matches
 set incsearch    " incremental searching
 set ignorecase   " searches are case insensitive...
@@ -146,8 +148,8 @@ let g:DoxygenToolkit_paramTag_pre="@Param "
 let g:DoxygenToolkit_returnTag="@Returns   "
 let g:DoxygenToolkit_blockHeader="-------------------------------"
 let g:DoxygenToolkit_blockFooter="---------------------------------"
-let g:DoxygenToolkit_authorName="Carlos Ramon M. Leite <ramon.ethan@gmail.com>"
-let g:DoxygenToolkit_licenseTag="UFMT"
+let g:DoxygenToolkit_authorName="Sergio Prado <sergio.prado@e-labworks.com>"
+let g:DoxygenToolkit_licenseTag="MIT"
 
 " MyNext() and MyPrev(): Movement between tabs OR buffers
 function! MyNext()
