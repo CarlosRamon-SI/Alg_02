@@ -29,31 +29,12 @@ void Iniciar( TListaProduto *L ){
 }
 
 int Inserir(  TListaProduto *L, TProduto p ){
-    printf("Digite o codigo do produto: ");
-    scanf("%d",&p->codigo);
-    printf("Digite o nome do produto: ");
-    scanf(" %s",&p->nome);
-    printf("Digite o fabricante: ");
-    scanf(" %s",&p->fabricante);
-    printf("Digite o preço de varejo: ");
-    scanf("%f",&p->precoVarejo);
-    printf("Quantidade mínima para Atacado: ");
-    scanf("%d",&p->quantMinimaAtacado);
-    printf("Digite o valor de Atacado: ");
-    scanf("%f",&p->preco);
-    while(p->preco > p->precoVarejo){
-        printf("Valor de atacado deve ser menor que valor de Varejo.\n");
-        printf("Digite o valor de Atacado: ");
-        scanf("%f",&p->preco);
-    }
-        // preencher essa função
+    // preencher essa função
 }
-
 
 TProduto * Buscar( TListaProduto L, int codigo ){ 
 	// preencher essa função
 }
-
 
 int Remover ( TListaProduto * L, int codigo ) {
     TNoProduto *anterior, *atual ;
@@ -81,7 +62,6 @@ int Remover ( TListaProduto * L, int codigo ) {
     return -1;
 }
 
-
 void Terminar (  TListaProduto *L ){
     TNoProduto *no, *atual ;
     atual = L->head;
@@ -93,7 +73,6 @@ void Terminar (  TListaProduto *L ){
     }
     L->head = NULL;
 }
-
 
 void Exibir ( TListaProduto L ){
     TNoProduto *aux;
@@ -113,24 +92,22 @@ int  Tamanho( TListaProduto L  ){
 	return L.tamanho;
 }
 
-
 int main(){
-	int i=1, ret, id;
-	//char resp;
+	int id;
 	TListaProduto l;
 	TProduto p, *pRet ;
-	// TNoProduto *pNo;
 	FILE *f;
 	char nomeArquivo[50];
 	printf("Entre com o nome do arquivo: ");
 	scanf(" %s", nomeArquivo);
 	Iniciar(&l);
 	f = fopen(nomeArquivo, "rb");
-	do{
+	while (!feof(f)) {
 		fread(&p, sizeof(TProduto), 1, f );
 		if ( !feof(f) )
-			ret = Inserir(&l, p);
-	} while (!feof(f));
+		    printf(" %d | %s | %s | %.2f | %d | %.2f \n", p.codigo, p.nome, p.fabricante, p.precoVarejo, p.quantMinimaAtacado, p.precoAtacado );
+			//Inserir(&l, p);
+    }
 	Exibir(l);	
 	fclose(f);
 	printf("Entre com um código para se buscar um produto");
@@ -146,5 +123,5 @@ int main(){
         printf("Não encontrado \n");
 	printf("Finalizando a lista\n" );
 	Terminar(&l);
-        Exibir(l);	
+    Exibir(l);	
 }
