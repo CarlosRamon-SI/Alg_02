@@ -10,13 +10,12 @@ typedef struct TProduto{
 	float precoVarejo;
 	int quantMinimaAtacado;
 	float precoAtacado;	
-	}TProduto;
+	} TProduto;
 	
 typedef struct TNoProduto{
 	TProduto p;
 	struct TNoProduto *Prox;
-}TNoProduto;
-
+} TNoProduto;
 
 // estrutura de controle da lista
 typedef struct TListaProduto{
@@ -30,7 +29,24 @@ void Iniciar( TListaProduto *L ){
 }
 
 int Inserir(  TListaProduto *L, TProduto p ){
-	// preencher essa função
+    printf("Digite o codigo do produto: ");
+    scanf("%d",&p->codigo);
+    printf("Digite o nome do produto: ");
+    scanf(" %s",&p->nome);
+    printf("Digite o fabricante: ");
+    scanf(" %s",&p->fabricante);
+    printf("Digite o preço de varejo: ");
+    scanf("%f",&p->precoVarejo);
+    printf("Quantidade mínima para Atacado: ");
+    scanf("%d",&p->quantMinimaAtacado);
+    printf("Digite o valor de Atacado: ");
+    scanf("%f",&p->preco);
+    while(p->preco > p->precoVarejo){
+        printf("Valor de atacado deve ser menor que valor de Varejo.\n");
+        printf("Digite o valor de Atacado: ");
+        scanf("%f",&p->preco);
+    }
+        // preencher essa função
 }
 
 
@@ -57,10 +73,10 @@ int Remover ( TListaProduto * L, int codigo ) {
 			L->tamanho--;
 		}
 		return 0;
-	 } else {
+	    } else {
 		 anterior = atual;
 		 atual = atual->Prox;
-	 }
+	}
     }
     return -1;
 }
@@ -100,10 +116,10 @@ int  Tamanho( TListaProduto L  ){
 
 int main(){
 	int i=1, ret, id;
-	char resp;
+	//char resp;
 	TListaProduto l;
 	TProduto p, *pRet ;
-	TNoProduto *pNo;
+	// TNoProduto *pNo;
 	FILE *f;
 	char nomeArquivo[50];
 	printf("Entre com o nome do arquivo: ");
@@ -130,5 +146,5 @@ int main(){
         printf("Não encontrado \n");
 	printf("Finalizando a lista\n" );
 	Terminar(&l);
-	Exibir(l);	
+        Exibir(l);	
 }
