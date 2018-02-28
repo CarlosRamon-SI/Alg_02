@@ -2,15 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 typedef struct TProduto{
 	int codigo;
 	char nome[30];
 	char fabricante[30];
 	float precoVarejo;
 	int quantMinimaAtacado;
-	float precoAtacado;	
-	} TProduto;
+	float precoAtacado;
+} TProduto;
 	
 typedef struct TNoProduto{
 	TProduto p;
@@ -29,7 +28,24 @@ void Iniciar( TListaProduto *L ){
 }
 
 int Inserir(  TListaProduto *L, TProduto p ){
-    // preencher essa função
+    printf("Digite o Codigo do Produto: ");
+    scanf("%d",&p.codigo);
+    printf("Digite o Nome do Produto: ");
+    scanf(" %s",p.nome);
+    printf("Digite o Fabricante do Produto: ");
+    scanf(" %s",p.fabricante);
+    printf("Digite o Valor de Venda (VAREJO): ");
+    scanf("%f",&p.precoVarejo);
+    printf("Digite a quantidade mínima para compra no Atacado: ");
+    scanf("%d",&p.quantMinimaAtacado);
+    printf("Digite o Valor de Venda (ATACADO): ");
+    scanf("%f",&p.precoAtacado);
+    while(p.precoAtacado >= p.precoVarejo) {
+        printf("Valor Incorreto! Valor de Atacado deve ser MENOR que Valor de Varejo.\n");
+        printf("Digite o Valor de Venda (ATACADO): \n");
+        scanf("%f",&p.precoAtacado);
+    }
+    return 0;
 }
 
 TProduto * Buscar( TListaProduto L, int codigo ){ 
@@ -93,7 +109,7 @@ int  Tamanho( TListaProduto L  ){
 }
 
 int main(){
-	int id;
+	int id, ret = 0;
 	TListaProduto l;
 	TProduto p, *pRet ;
 	FILE *f;
@@ -101,13 +117,14 @@ int main(){
 	printf("Entre com o nome do arquivo: ");
 	scanf(" %s", nomeArquivo);
 	Iniciar(&l);
-	f = fopen(nomeArquivo, "rb");
+	f = fopen(nomeArquivo, "rb+");
+    /*
 	while (!feof(f)) {
 		fread(&p, sizeof(TProduto), 1, f );
 		if ( !feof(f) )
-		    printf(" %d | %s | %s | %.2f | %d | %.2f \n", p.codigo, p.nome, p.fabricante, p.precoVarejo, p.quantMinimaAtacado, p.precoAtacado );
-			//Inserir(&l, p);
+			ret = Inserir(&l, p);
     }
+    */
 	Exibir(l);	
 	fclose(f);
 	printf("Entre com um código para se buscar um produto");

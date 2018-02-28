@@ -38,6 +38,7 @@ int main() {
         } while (resp == 's' || resp == 'S');
     }
     fclose(file);
+    printf("sizeof %d\n",sizeof(Cadastro));
 
     file = fopen("dados.bin","rb");
     if (file == NULL) {
