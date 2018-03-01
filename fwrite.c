@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#define TAM 3
 
 typedef struct TCadastro {
     char nome[30];
@@ -28,13 +27,13 @@ int main() {
             printf("Arquivo aberto com sucesso!\n");
             registro.codigo = 1;
             printf("Digite o nome: ");
-            scanf(" %s", registro.nome);
+            fscanf(stdin," %s", registro.nome);
             printf("Digite a idade: ");
             scanf("%d", &registro.idade);
             fwrite(&registro, sizeof(registro), 1, file);
             printf("Deseja continuar ? [S/N]");
             scanf(" %c", &resp);
-            i++;
+//            i++;
         } while (resp == 's' || resp == 'S');
     }
     fclose(file);

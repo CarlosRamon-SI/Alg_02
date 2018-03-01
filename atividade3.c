@@ -22,12 +22,13 @@ typedef struct TListaProduto{
 	int tamanho;
 } TListaProduto;
 
-void Iniciar( TListaProduto *L ){
+void Iniciar( TListaProduto *L, int qtd ){
     L->head = NULL;
-    L->tamanho = 0;
+    L->tamanho = qtd;
 }
 
 int Inserir(  TListaProduto *L, TProduto p ){
+    
     printf("Digite o Codigo do Produto: ");
     scanf("%d",&p.codigo);
     printf("Digite o Nome do Produto: ");
@@ -116,17 +117,15 @@ int main(){
 	char nomeArquivo[50];
 	printf("Entre com o nome do arquivo: ");
 	scanf(" %s", nomeArquivo);
-	Iniciar(&l);
-	f = fopen(nomeArquivo, "rb+");
-    /*
+	f = fopen(nomeArquivo, "ab+");
 	while (!feof(f)) {
 		fread(&p, sizeof(TProduto), 1, f );
 		if ( !feof(f) )
-			ret = Inserir(&l, p);
+			ret++;
     }
-    */
-	Exibir(l);	
-	fclose(f);
+	Iniciar(&l,ret);
+	Exibir(l);
+    fclose(f);
 	printf("Entre com um código para se buscar um produto");
 	scanf(" %d", &id );
 	pRet = Buscar(l, id );
