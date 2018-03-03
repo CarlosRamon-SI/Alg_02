@@ -30,56 +30,49 @@ L->head = NULL;
 L->tamanho = 0;
 }
 
-int Inserir(  TListaProduto *L, TProduto p )
-{
-	// preencher essa função
+void Inserir(  TListaProduto *L, TProduto p ) {
 	TNoProduto *ant, *atual;
-	TNoProduto *no = malloc(sizeof(TNoProduto));
-	no->p = p;
-	// testando a lista vazia
-	if ( no != NULL )
-	{
-		if ( L->head == NULL)
-		{
-			L->head = no;
-			no->Prox = NULL;
+	TNoProduto *noh = malloc(sizeof(TNoProduto));
+	noh->p = p;
+	
+	if ( noh != NULL ) {
+        if ( L->head == NULL) {
+			L->head = noh;
+			noh->Prox = NULL;
 			L->tamanho++;
-		}
-		else
-		{
+		} else {
+
 			atual = L->head;
-			// no será a nova cabeça
-			if ( no->p.codigo < atual->p.codigo )
-			{
-				L->head = no;
-				no->Prox = atual;
+			if ( noh->p.codigo < atual->p.codigo ) {
+				L->head = noh;
+				noh->Prox = atual;
 				L->tamanho++;
-			}
-			// no não está no começo da lista
-			else
-			{	while (( atual != NULL ) && 
-				     ( no->p.codigo > atual->p.codigo ))
-				{
+			} else {
+                
+				while (atual != NULL && ( noh->p.codigo > atual->p.codigo ))	{
 					ant = atual;
 					atual = atual->Prox;
 				}
-				ant->Prox = no;
-				no->Prox = atual;
+
+				ant->Prox = noh;
+				noh->Prox = atual;
 				L->tamanho++;
 			}
 		}
-	return 1;
-	}
-	else 
-		return 0;
+    }
 }
 
-
-TProduto * Buscar( TListaProduto L, int codigo ) 
-{ 
-	// preencher essa função
+TNoProduto * Buscar( TListaProduto L, int codigo ) {
+    TNoProduto *auxiliar;
+    auxiliar = L.head;
+    while(auxiliar != NULL){
+        if(auxiliar->p.codigo == codigo) {
+            return auxiliar;
+        } else {
+            auxiliar = auxiliar->Prox;
+        }
+    }
 }
-
 
 int Remover ( TListaProduto * L, int codigo ) {
 TNoProduto *anterior, *atual ;
@@ -134,10 +127,10 @@ void Exibir ( TListaProduto L )
     aux = L.head;
     printf("*******Elementos na lista ***********\n");
     printf("Tamanho: %d\n", L.tamanho);
-    printf("Head -> ");
+    printf("Head ->  ");
     while (aux != NULL )
     {	
-		printf("%d | %s | %s | %.2f | %d | %.2f \n ", aux->p.codigo, aux->p.nome, aux->p.fabricante, aux->p.precoVarejo, aux->p.quantMinimaAtacado, aux->p.precoAtacado );
+		printf("%4d | %s \t| %s \t| R$ %7.2f | %03d | R$ %7.2f \n\t ", aux->p.codigo, aux->p.nome, aux->p.fabricante, aux->p.precoVarejo, aux->p.quantMinimaAtacado, aux->p.precoAtacado );
 		aux = aux->Prox;		
 	} 
 	printf ( " NULL\n" );
@@ -151,11 +144,11 @@ int  Tamanho( TListaProduto L  )
 
 
 int main(){
-	int i=1, ret, id;
+	int i=1, id;
 	char resp;
 	TListaProduto l;
-	TProduto p, *pRet ;
-	TNoProduto *pNo;
+	TProduto p;
+	TNoProduto *pNo, *pRet;
 	FILE *f;
 	char nomeArquivo[50];
 	printf("Entre com o nome do arquivo: ");
@@ -166,17 +159,17 @@ int main(){
 	{
 		fread(&p, sizeof(TProduto), 1, f );
 		if ( !feof(f) )
-			ret = Inserir(&l, p);
+			Inserir(&l, p);
 	}
 	while (!feof(f));
 	Exibir(l);	
 	fclose(f);
-	printf("Entre com um código para se buscar um produto");
+	printf("Entre com um código para se buscar um produto\n");
 	scanf(" %d", &id );
 	pRet = Buscar(l, id );
 	if (pRet != NULL ){
 		printf("****** Produto encontrado ************* \n\n");
-		printf("%d | %s | %s | %.2f | %d | %.2f \n ", pRet->codigo, pRet->nome, pRet->fabricante, pRet->precoVarejo, pRet->quantMinimaAtacado, pRet->precoAtacado );
+		printf("\t%4d | %s \t| %s \t| R$ %7.2f | %03d | R$ %7.2f \n", pRet->p.codigo, pRet->p.nome, pRet->p.fabricante, pRet->p.precoVarejo, pRet->p.quantMinimaAtacado, pRet->p.precoAtacado );
 		printf("****** Removendo da lista ************* \n\n");
 		Remover(&l, id );
 		Exibir(l);
