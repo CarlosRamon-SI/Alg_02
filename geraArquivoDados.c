@@ -7,6 +7,7 @@ typedef struct TProduto{
 	float precoVarejo;
 	int quantMinimaAtacado;
 	float precoAtacado;	
+    int situacao;
 	}TProduto;
 
 int main()
@@ -19,10 +20,9 @@ int main()
 	scanf(" %s", nomeArquivo);
 	
 	f = fopen(nomeArquivo, "wb");
-	if ( f != NULL )
-	{
-		do
-		{
+	if ( f != NULL ){
+		do	{
+            p.situacao = 1;
 			printf("Entre com o código do produto: ");
 			scanf(" %d", &p.codigo);
 			printf("Entre com o nome do produto: ");
@@ -37,15 +37,12 @@ int main()
 				printf(" Preço de atacado deve ser menor ou igual ao de varejo\n");	
 				printf("Entre com o preço de atacado do produto: ");
 				scanf(" %f", &p.precoAtacado);
-		    }
-		    while ( p.precoAtacado > p.precoVarejo );
-			// gravando informacao
+		    } while ( p.precoAtacado > p.precoVarejo );
 			fwrite(&p, sizeof(TProduto), 1, f );
 			fflush(f);
 			printf("Deseja continuar (s/n) ?: ");
 			scanf(" %c", &resp);			
-		}
-		while (resp == 's' || resp == 'S');
+		} while (resp == 's' || resp == 'S');
 		fclose(f);
 		printf("Dados gravados no arquivo\n");
 		
